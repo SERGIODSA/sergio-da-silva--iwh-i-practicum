@@ -27,4 +27,4 @@ ___
 - You must have at least two new routes in your index.js file and one new pug template for the homepage.
 - You must create a developer test account and link to it in your README.md file. Submissions that do not meet this requirement will not be considered.
 
-https://app.hubspot.com/contacts/<test-account-id>/objects/<custom-object-id>/views/all/list
+https://app.hubspot.com/contacts/49570270/objects/2-42130312/views/all/list

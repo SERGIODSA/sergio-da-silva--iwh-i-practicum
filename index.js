@@ -7,16 +7,18 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const PRIVATE_APP_ACCESS = 'f4487a94-478c-4b10-97c4-a74e894adfc9';
-const HUBSPOT_CUSTOM_OBJECT = 'company';
+const PRIVATE_APP_ACCESS = 'pat-na1-7ea35ed9-6d3b-4d5b-89d4-623cf8179cd0';
+const HUBSPOT_CUSTOM_OBJECT = '2-42130312';
 
 //Route 1: Render Homepage & Fetch Custom Object Data
 app.get('/', async (req, res) => {
     try {
         const response = await axios.get(
-            `https://api.hubapi.com/crm/v3/objects/${HUBSPOT_CUSTOM_OBJECT}`,
+            `https://api.hubapi.com/crm/v3/objects/${HUBSPOT_CUSTOM_OBJECT}?properties=name,publisher,price`,
             { headers: { Authorization: `Bearer ${PRIVATE_APP_ACCESS}` } }
         );
+
+        console.log('Custom Objects Table', response.data.results)
 
         res.render('homepage', { title: 'Custom Objects Table', objects: response.data.results });
     } catch (error) {
@@ -32,16 +34,16 @@ app.get('/update-cobj', (req, res) => {
 
 //Route 3: Handle Form Submission to Create/Update Custom Object
 app.post('/update-cobj', async (req, res) => {
-    const { company1, company2, company3 } = req.body; 
+    const { name, publisher, price } = req.body; 
 
     try {
         const response = await axios.post(
             `https://api.hubapi.com/crm/v3/objects/${HUBSPOT_CUSTOM_OBJECT}`,
             {
                 properties: {
-                    company1,
-                    company2,
-                    company3,
+                    name,
+                    publisher,
+                    price,
                 },
             },
             { headers: { Authorization: `Bearer ${PRIVATE_APP_ACCESS}`, "Content-Type": "application/json" } }

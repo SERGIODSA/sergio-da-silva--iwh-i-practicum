@@ -9,15 +9,15 @@ html
     table(border="1")
       thead
         tr
-          th Company 1
-          th Company 2
-          th Company 3
+          th Name
+          th Publisher
+          th Price
       tbody
         each obj in objects
           tr
-            td= obj.properties.company1
-            td= obj.properties.company2
-            td= obj.properties.company3
+            td= obj.properties.name
+            td= obj.properties.publisher
+            td= obj.properties.price
 
     br
     a(href='/update-cobj') Add New Custom Object
