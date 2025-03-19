@@ -1,13 +1,14 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
+require('dotenv').config();
 
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const PRIVATE_APP_ACCESS = '';
+const PRIVATE_APP_ACCESS = process.env.PRIVATE_APP_ACCESS;
 const HUBSPOT_CUSTOM_OBJECT = '2-42130312';
 
 //Route 1: Render Homepage & Fetch Custom Object Data
