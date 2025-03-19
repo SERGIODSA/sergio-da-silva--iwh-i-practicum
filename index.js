@@ -7,7 +7,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//const PRIVATE_APP_ACCESS = 'pat-na1-7ea35ed9-6d3b-4d5b-89d4-623cf8179cd0';
+const PRIVATE_APP_ACCESS = '';
 const HUBSPOT_CUSTOM_OBJECT = '2-42130312';
 
 //Route 1: Render Homepage & Fetch Custom Object Data
